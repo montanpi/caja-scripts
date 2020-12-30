@@ -1,0 +1,3 @@
+#!/bin/sh
+a=$(wc -w "$@" | awk '{print $1;}')
+zenity --info --text="$a" --title="Word Count"

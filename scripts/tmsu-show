@@ -1,0 +1,6 @@
+#!/bin/sh
+# exclude filename
+#a=$(tmsu tags "$@" | awk '{$1=""; print $0}')
+# with filename
+a=$(tmsu tags "$@")
+zenity --info --text="$a" --width=400 --title="TMSU Tags of file $@"

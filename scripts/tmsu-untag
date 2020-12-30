@@ -1,0 +1,38 @@
+#!/bin/bash
+# adapted from
+# https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/4
+NUMBER_ARGS=$#
+
+TAGS=$(zenity --entry --width=250 --title "Untag with TMSU" --text "Tags:\n$(tmsu tags)\n\nEnter space separated tags")
+
+# User presses Cancel button
+if [[ "$?" -eq 1 ]]; then
+    zenity --info --text="Cancelled"
+    exit 1
+fi
+
+# Check if tags is an empty string using -z
+if [[ -z "$TAGS" ]]; then
+    zenity --info --text="No tag entered"
+    exit 1
+fi
+
+# read the tags separated by space into an array
+readarray -d ' ' -t STR_ARR <<< $TAGS
+
+for (( i=1; i<=$NUMBER_ARGS; i++ )); do
+    echo "# ${1##*/}"
+    for (( j=0; j<${#STR_ARR[*]}; j++ )); do
+      # strip any newline from the tags
+      tmsu untag "${1}" "${STR_ARR[j]//[$'\t\r\n']}"
+    done
+    echo "$(( (i * 100)/$NUMBER_ARGS ))"
+    sleep 0.2 
+    shift 1
+done | zenity --progress --auto-close --title="Removing tag(s) $TAGS from files" --percentage=0
+
+if [ "$?" -eq 1 ]; then
+    zenity --error --text="Cancelled"
+    exit 1
+fi
+

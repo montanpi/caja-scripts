@@ -1,0 +1,12 @@
+#!/bin/bash
+FILE_SYSTEM=$(zenity --title "Select a folder to search for hard links" --file-selection --directory)
+if [ -n "$FILE_SYSTEM" ]; then
+  a=$(find "$FILE_SYSTEM" -xdev -samefile "$@")
+  if [ -n "$a" ]; then
+    zenity --info --title "Hard Links of '$@'" --width=700 --text="$a"
+  else
+    zenity --info --title "Hard Links of '$@'" --width=700 --text="No hard links found in '$FILE_SYSTEM'"
+  fi
+fi
+exit
+

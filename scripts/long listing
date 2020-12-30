@@ -1,0 +1,4 @@
+#!/bin/sh
+# TODO change --info into --list
+a=$(ls -lia "$@")
+zenity --info --title="Long Listing" --width=700 --text="$a"
