@@ -1,7 +1,6 @@
 #!/bin/bash
-FILE=`echo -n $CAJA_SCRIPT_SELECTED_FILE_PATHS`
+FILE=$(echo -n $CAJA_SCRIPT_SELECTED_FILE_PATHS)
 
 DESTINATION=$(zenity --title "Select a folder" --file-selection --directory)
 cp -irl "$@" "$DESTINATION"
 exit
-

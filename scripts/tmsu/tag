@@ -7,32 +7,31 @@ TAGS=$(zenity --entry --width=250 --title "Tag with TMSU" --text "Tags:\n$(tmsu 
 
 # User presses Cancel button
 if [[ "$?" -eq 1 ]]; then
-    zenity --info --text="Cancelled by user"
-    exit 1
+  zenity --info --text="Cancelled by user"
+  exit 1
 fi
 
 # Check if tags is an empty string using -z
 if [[ -z "$TAGS" ]]; then
-    zenity --info --text="No tag entered"
-    exit 1
+  zenity --info --text="No tag entered"
+  exit 1
 fi
 
 # read the tags separated by space into an array
-readarray -d ' ' -t TAG_ARR <<< $TAGS
+readarray -d ' ' -t TAG_ARR <<<$TAGS
 
-for (( i=1; i<=$NUMBER_ARGS; i++ )); do
-    echo "# ${1##*/}"
-    for (( j=0; j<${#TAG_ARR[*]}; j++ )); do
-      # strip any newline from the tags
-      tmsu tag "$(readlink -f "${1}")" "${TAG_ARR[j]//[$'\t\r\n']}"
-    done
-    echo "$(( (i * 100)/$NUMBER_ARGS ))"
-    sleep 0.1 
-    shift 1
+for ((i = 1; i <= $NUMBER_ARGS; i++)); do
+  echo "# ${1##*/}"
+  for ((j = 0; j < ${#TAG_ARR[*]}; j++)); do
+    # strip any newline from the tags
+    tmsu tag "$(readlink -f "${1}")" "${TAG_ARR[j]//[$'\t\r\n']/}"
+  done
+  echo "$(((i * 100) / $NUMBER_ARGS))"
+  sleep 0.1
+  shift 1
 done | zenity --progress --auto-close --title="Applying tag(s) $TAGS to file(s)" --percentage=0
 
 if [ "$?" -eq 1 ]; then
-    zenity --error --text="Cancelled"
-    exit 1
+  zenity --error --text="Cancelled"
+  exit 1
 fi
-

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-numberArgs=$#
+ARGS_NUMBER=$#
 
 OUTPUT=$(zenity --file-selection --directory --title="Choose target directory")
 
@@ -11,10 +11,10 @@ fi
 
 TARGETDIR=$(awk -F, '{print $1}' <<<$OUTPUT)
 
-for ((i = 1; i <= $numberArgs; i++)); do
+for ((i = 1; i <= $ARGS_NUMBER; i++)); do
   echo "# ${1##*/}"
   cp -p -r "$(readlink -f ${1})" "$TARGETDIR/"
-  echo "$(((i * 100) / $numberArgs))"
+  echo "$(((i * 100) / $ARGS_NUMBER))"
   sleep 0.1
   shift 1
 done | zenity --progress --title="Copy files to $TARGETDIR" --percentage=0 --auto-close
