@@ -1,14 +1,12 @@
 #!/bin/bash
- 
-current_status=$(gsettings get org.mate.caja.preferences sort-directories-first)
-echo "current Status: $current_status";
- 
-if [[ $current_status = true ]]
-then
-echo "set to false"
-gsettings set org.mate.caja.preferences sort-directories-first false
-else
-echo "set to true"
-gsettings set org.mate.caja.preferences sort-directories-first true
-fi;
 
+current_status=$(gsettings get org.mate.caja.preferences sort-directories-first)
+echo "current Status: $current_status"
+
+if [[ $current_status = true ]]; then
+  echo "set to false"
+  gsettings set org.mate.caja.preferences sort-directories-first false
+else
+  echo "set to true"
+  gsettings set org.mate.caja.preferences sort-directories-first true
+fi
