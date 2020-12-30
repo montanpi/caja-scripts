@@ -18,7 +18,7 @@
 ; (gtk_accel_path "<Actions>/ClipboardActions/Copy" "")
 ; (gtk_accel_path "<Actions>/ShellActions/Preferences" "")
 ; (gtk_accel_path "<Actions>/DirViewActions/LocationRestoreFromTrash" "")
-; (gtk_accel_path "<Actions>/ScriptsGroup/script_file:\\s\\s\\shome\\spietro\\s.config\\scaja\\sscripts\\scopy\\scp%20--deference" "")
+(gtk_accel_path "<Actions>/ScriptsGroup/script_file:\\s\\s\\shome\\spietro\\s.config\\scaja\\sscripts\\scopy\\scp%20--deference" "<Primary><Alt>y")
 ; (gtk_accel_path "<Actions>/DirViewActions/OpenAccel" "<Alt>Down")
 ; (gtk_accel_path "<Actions>/DirViewActions/Delete" "")
 ; (gtk_accel_path "<Actions>/DirViewActions/No Templates" "")
