@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Created by oss-lvr (https://github.com/oss-lvr)
 # View checksum of any file from Caja
