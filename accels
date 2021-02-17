@@ -92,7 +92,7 @@
 ; (gtk_accel_path "<Actions>/NavigationActions/Tab0" "<Alt>1")
 (gtk_accel_path "<Actions>/ScriptsGroup/script_file:\\s\\s\\shome\\spietro\\s.config\\scaja\\sscripts\\sterminal\\sopen%20terminal%20here" "<Primary><Alt>r")
 ; (gtk_accel_path "<Actions>/DirViewActions/Unmount Volume" "")
-(gtk_accel_path "<Actions>/ScriptsGroup/script_file:\\s\\s\\shome\\spietro\\s.config\\scaja\\sscripts\\stoggle%20directories%20first" "<Primary><Alt>d")
+(gtk_accel_path "<Actions>/ScriptsGroup/script_file:\\s\\s\\shome\\spietro\\s.config\\scaja\\sscripts\\sdirectories\\stoggle%20directories%20first" "<Primary><Alt>d")
 ; (gtk_accel_path "<Actions>/DirViewActions/Duplicate" "")
 ; (gtk_accel_path "<Actions>/NavigationActions/Show Hide Statusbar" "")
 ; (gtk_accel_path "<Actions>/NavigationActions/Bookmarks" "")
