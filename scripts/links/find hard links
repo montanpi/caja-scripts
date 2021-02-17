@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 FILE_SYSTEM=$(zenity --title "Select a folder to search for hard links" --file-selection --directory)
 if [ -n "$FILE_SYSTEM" ]; then
   a=$(find "$FILE_SYSTEM" -xdev -samefile "$@")

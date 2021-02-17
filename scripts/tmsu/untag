@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # adapted from
 # https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/4
 NUMBER_ARGS=$#

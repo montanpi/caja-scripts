@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 current_status=$(gsettings get org.mate.caja.preferences sort-directories-first)
 echo "current Status: $current_status"
