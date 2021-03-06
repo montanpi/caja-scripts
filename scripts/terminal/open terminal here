@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-sakura --working-directory "$CAJA_SCRIPT_SELECTED_FILE_PATHS"
