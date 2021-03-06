@@ -3,4 +3,4 @@
 from os import system, environ
 
 paths = environ['CAJA_SCRIPT_SELECTED_FILE_PATHS']
-system(f'echo -n "{paths}" | xclip')
+system(f'echo -n "$(readlink -f {paths})" | xclip')
