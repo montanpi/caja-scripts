@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ "$CAJA_SCRIPT_SELECTED_FILE_PATHS" = "$IFS" ]; then
+  zenity --info --text='No dirs selected, exiting' --title='Remove TMSU query'
+else
+  IFS_BAK=$IFS
+  IFS="
+    "
+  for dir in $CAJA_SCRIPT_SELECTED_FILE_PATHS; do
+    rmdir "$dir"
+  done
+  IFS=$IFS_BAK
+fi

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+count=$(for f in $(tmsu tags); do echo "$f"::"$(tmsu files "$f" | wc -l)"; done)
+
+zenity --info --text="$count" --width=400 --title="Tag::count"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+QUERY=$(zenity --entry --width=250 --title "Add TMSU query" --text "Enter a new TMSU query.\nCtrl+r to refresh Caja and show the newly added query")
+
+# Check if tags is an empty string using -z
+if [[ -z "$QUERY" ]]; then
+  zenity --info --text="No query entered"
+  exit 1
+fi
+
+ls "$QUERY"

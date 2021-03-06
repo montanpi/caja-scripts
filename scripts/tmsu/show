@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 a=$(tmsu tags "$@")
-zenity --info --text="$a" --width=400 --title="TMSU Tags of file $@"
+zenity --info --text="$a" --width=400 --title="TMSU Tags of file $*"
