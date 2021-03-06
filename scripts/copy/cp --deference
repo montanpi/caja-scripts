@@ -9,12 +9,12 @@ if [ "$?" -eq 1 ]; then
   exit 1
 fi
 
-TARGETDIR=$(awk -F, '{print $1}' <<<$OUTPUT)
+TARGETDIR=$(awk -F, '{print $1}' <<<"$OUTPUT")
 
-for ((i = 1; i <= $ARGS_NUMBER; i++)); do
+for ((i = 1; i <= "$ARGS_NUMBER"; i++)); do
   echo "# ${1##*/}"
-  cp -p -r "$(readlink -f ${1})" "$TARGETDIR/"
-  echo "$(((i * 100) / $ARGS_NUMBER))"
+  cp -p -r "$(readlink -f "${1}")" "$TARGETDIR/"
+  echo "$(((i * 100) / "$ARGS_NUMBER"))"
   sleep 0.1
   shift 1
 done | zenity --progress --title="Copy files to $TARGETDIR" --percentage=0 --auto-close
