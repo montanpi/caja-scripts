@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+deg=$(zenity --entry --width=250 --title "Imagemagick rotate" --text "Enter the degrees you want to rotate the selected image(s)")
+
+# Check if tags is an empty string using -z
+if [[ -z "$deg" ]]; then
+  zenity --info --text="No degrees entered"
+  exit 1
+fi
+
+if [ "$CAJA_SCRIPT_SELECTED_FILE_PATHS" = "$IFS" ]; then
+  zenity --info --text='No files selected, exiting' --title='Cmd'
+else
+  IFS_BAK=$IFS
+  IFS="
+    "
+  for file in $CAJA_SCRIPT_SELECTED_FILE_PATHS; do
+    convert "$(readlink -f "$file")" -rotate "$deg" "$(readlink -f "$file")"
+  done
+  IFS=$IFS_BAK
+fi
